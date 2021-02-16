@@ -2,16 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/fullpage.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
     <title>Portfolio</title>
 </head>
 <body>
     <div  class="content">
 
     <nav class="navbar">
+        <div class="nav_content">
         <div class="icon">
             <img src="./img/bug.png" alt="">Array_Portfolio
         </div>
@@ -24,15 +26,34 @@
                 <li><a href="">Client</a></li>
             </ul>
         </div>
+        </div>
+
+
+        
+        <div class="ham_menu" id="menu_toggle">
+            <div class="line" ></div>
+            <div class="line" id="middle_line"></div>
+            <div class="line"></div>
+        </div>
     </nav>
+
+    <div class="menu_bar_toggle" id="slider">
+        <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">About Me</a></li>
+            <li><a href="">Services</a></li>
+            <li><a href="">Portfolio</a></li>
+            <li><a href="">Client</a></li>
+        </ul>
+    </div>
 
     
         <div class="main_content">
             <div class="row">
             <div class="left_main">
-                <h1>I'm Sibonelo Vilakazi</h1>
+                <h1>I'M <span>Sibonelo Vilakazi</span> </h1>
                 <h2>Software Engineer</h2>
-                <p>I am an enthusiastics and professional IT personal</p>
+                <p>I am an enthusiatics and personal IT personal who likes working in a productive and sucessfull team.</p>
                 <button class="btn">Download CV</button>
             </div>
             <div class="right_main">
@@ -375,6 +396,64 @@
 
     <!-- <script src="./js/fullpage.min.js"></script>
     <script src="./js/animation.js"></script> -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>
     
+    <script src="./js/jquery.3.5.1.js"></script>
+    <script src="./js/app.js"></script>
+
+    <script>
+        var menu = document.getElementById('menu_toggle');
+        var clickcount=0;
+        var line =document.getElementsByClassName('line');
+        var or_line =line;
+        var slide_menu=document.getElementById('slider');
+        menu.addEventListener('click',function(){
+            
+            var line =document.getElementsByClassName('line');
+            clickcount++;
+            if(clickcount==1){
+            line[0].style.position='absolute';
+            line[2].style.position='absolute';
+            line[0].style.top='50%';
+            line[2].style.top='50%';
+            line[1].style.display ='none';
+            line[0].style.transform='rotate(-45deg)';
+            
+            line[2].style.transform='rotate(45deg)';
+            line[0].style.transition='0.7s';
+            line[2].style.transition='0.5s';
+            slide_menu.style.top="10%";
+            
+
+            }
+            
+            
+            if(clickcount>1){
+            clickcount=0;
+            menu.style.position='relative';
+            line[0].style.position='relative';
+            
+            line[2].style.position='relative';
+                line[0].style.top='0%';
+                line[1].style.display='';
+                line[2].style.top='0%';
+                line[2].style.bottom='0%';
+                menu.style.display='flex';
+                menu.style.justifyContent='space-evenly';
+        
+           // line=or_line;
+                line[0].style.transform='rotate(0deg)';
+                line[2].style.transform='rotate(0deg)';
+            
+                line[0].style.transition='0.5s';
+                line[2].style.transition='0.5s';
+                slide_menu.style.top="-100%";
+            }
+            
+        });
+
+    </script>
 </body>
 </html>
